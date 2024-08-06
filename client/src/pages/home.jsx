@@ -1,11 +1,9 @@
-import Test from '../components/Test';
+import Game from '../components/Game';
 
 const Home = () => {
     return (
         <main>
-            <h1>Testing area for typing challenge</h1>
-            <Test/>
-            
+            <Game/>
         </main>
     );
 };

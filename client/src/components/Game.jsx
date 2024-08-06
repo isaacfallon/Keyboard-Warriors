@@ -10,9 +10,9 @@ const Test = () => {
     useEffect(() => {
         // setWordCount(1);
         if (timeLeft === 0) {
-            console.log("TIME LEFT IS 0");
+            alert("TIME'S UP");
             setTimeLeft(null);
-            console.log(`You typed ${wordCount - 1} words`);
+            // console.log(`You typed ${wordCount - 1} words`);
         }
 
         // exit early when we reach 0
@@ -34,6 +34,8 @@ const Test = () => {
 
     const [wordText, setWordText] = useState('');
 
+    const [letterCount, setLetterCount] = useState(1);
+
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -45,6 +47,7 @@ const Test = () => {
             if (value === element) {
                 // alert('correct')
                 // handleFormSubmit();
+                setLetterCount(letterCount + value.length);
                 setWordText('');
                 handleWordChange();
             }
@@ -57,40 +60,51 @@ const Test = () => {
 
     const [wordCount, setWordCount] = useState(1);
 
+
+
     const handleWordChange = () => {
         setWordCount(wordCount + 1);
-        console.log(wordCount);
+        // console.log(wordCount);
 
-        fetch('https://random-word-api.herokuapp.com/word?length=5')
+
+        fetch('https://random-word-api.herokuapp.com/word?length=6')
         .then(response => response.json())
-        .then(data => document.getElementById('word').innerHTML = data);
+        .then(data => document.getElementById('word').innerHTML = data)
+        // .then(data => setLetterCount(letterCount + data.toString().length));
+        // .then(data => console.log(data.toString().length));
 
-        let words = ['one', 'two', 'three'];
+        // let words = ['one', 'two', 'three'];
         // document.getElementById('word').innerHTML = data;
         // document.getElementById('word').innerHTML = words[(Math.floor(Math.random() * words.length))];
     }
 
+    function refreshPage(){ 
+        window.location.reload(); 
+    }
 
-    function startFunctions() {
+
+    function initGame() {
         handleWordChange();
-        setTimeLeft(10);
+        setTimeLeft(15);
         setWordCount(1);
+        setLetterCount(1);
     }
 
 
     return (
-        <div>
-            <h2>Typing test area here:</h2>
+        <div className="gameArea">
+            <h2>GAME AREA:</h2>
             <p id="word"></p>
 
             <form id="wordForm">
-                <input type="text" id="input" placeholder="Click here to start the test" value={wordText} onChange={handleChange} name="wordText" onClick={startFunctions}></input>
+                <input type="text" id="input" placeholder="Click here to start a game" value={wordText} onChange={handleChange} name="wordText" onClick={initGame}></input>
                 {/* <input type="submit" value="Submit"></input> */}
             </form>
             <p>{timeLeft}</p>
+            <button type="button" onClick={ refreshPage }> <span>Reload game</span> </button> 
 
-            <p>You typed {wordCount - 1} words </p>
-            {/* <p>WMP: {(wordCount - 1)} </p> */}
+            <p>You typed <strong>{wordCount - 1} words</strong></p>
+            <p>You typed <strong>{letterCount - 1} letters </strong></p>
 
         </div>
     );
