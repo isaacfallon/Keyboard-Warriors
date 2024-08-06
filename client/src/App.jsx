@@ -6,6 +6,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+import Header from './components/Header';
 
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -32,15 +33,15 @@ const client = new ApolloClient({
     // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
-  });
-  
-  function App() {
+});
+
+function App() {
     return (
-      <ApolloProvider client={client}>
+        <ApolloProvider client={client}>
+            <Header />
             <Outlet />
-      </ApolloProvider>
+        </ApolloProvider>
     );
-  }
-  
-  export default App;
-  
+}
+
+export default App;
