@@ -4,11 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 
 import App from './App';
-import Home from './pages/Home';
-import About from './pages/About';
-import Login from './pages/LoginAndSignUp';
-import Profile from './pages/Profile'
-import ErrorPage from './pages/errorPage';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Login from './pages/LoginAndSignUp.jsx';
+import Profile from './pages/Profile.jsx'
+import ErrorPage from './pages/errorPage.jsx';
 
 const router = createBrowserRouter([
     {
