@@ -1,3 +1,140 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Custom properties */
+
+:root {
+    --ff-primary: "Raleway", sans-serif;
+    --ff-secondary: 'Source Code Pro', monospace;
+
+    --fw-reg: 300;
+    --fw-semi-bold: 600;
+    --fw-bold: 900;
+
+    --clr-light: #fff;
+    --clr-dark: #303030;
+    --clr-accent: #2975b1;
+
+    --fs-h1: 2.5rem;
+    --fs-h2: 3rem;
+    --fs-h3: 2rem;
+    --fs-body: 1rem;
+
+    --bs: 0.25em 0.25em .75em rgba(0, 0, 0, .5),
+        0.125em 0.125em 0.25em rgba(0, 0, 0, .15);
+}
+
+/* ----------Overall styles---------- */
+
+body, header {
+    width: 60%;
+    margin: 0 auto;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    font-family: var(--ff-primary);
+    line-height: 1.6;
+}
+
+main {
+    min-height: 85vh;
+    padding-top: 1em;
+}
+
+main,
+header {
+    width: 90%;
+    margin: 0 auto;
+}
+
+strong {
+    font-weight: 800;
+    color: var(--clr-accent);
+}
+
+h1 {
+    font-size: var(--fs-h1)
+}
+
+h2 {
+    font-size: var(--fs-h2)
+}
+
+h3 {
+    font-size: var(--fs-h3)
+}
+
+
+a {
+    text-decoration: none;
+}
+
+/* ----------Header and Nav styles---------- */
+
+header {
+    width: 75%;
+    height: 75px;
+    border-bottom: 2px solid #f1f1f1;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.homeNavLink {
+    color: inherit;
+    text-decoration: none;
+}
+
+.homeNavLink:hover {
+    color: var(--clr-accent);
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    padding-top: 8px;
+}
+
+
+li {
+    padding: 18px 10px;
+    font-weight: var(--fw-semi-bold);
+}
+
+li:hover {
+    color: var(--clr-accent);
+}
+
+/* Game area */
+
 .gameArea {
     border: black 2px solid;
+    width: 75%;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;
+}
+
+.gameInput {
+    font-size: 1.5em;
+}
+
+.randomWord {
+    font-size: 2em;
 }
