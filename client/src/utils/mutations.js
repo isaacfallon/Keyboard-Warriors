@@ -23,3 +23,12 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_SCORE = gql`
+  mutation addScore($scoreNum: Int!) {
+    addScore(scoreNum: $scoreNum) {
+      _id
+      wordCount
+    }
+  }
+`;
