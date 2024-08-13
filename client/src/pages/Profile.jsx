@@ -1,17 +1,14 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import {useLocation} from 'react-router-dom';
 
-import { useState, useEffect, useRef } from 'react';
+// import ThoughtForm from '../components/ThoughtForm';
+import ScoreList from '../components/ScoreList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const Profile = () => {
-
-  const location = useLocation();
-
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -20,7 +17,7 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
   if (
-    Auth.loggedIn() && Auth.getProfile().data.username === userParam
+    Auth.loggedIn() && Auth.getProfile().authenticatedPerson.username === userParam
   ) {
     return <Navigate to="/me" />;
   }
@@ -38,20 +35,31 @@ const Profile = () => {
     );
   }
 
-  let scores = [];
-  scores.push(location.state)
-  // alert(scores)
+  return (
+    <div>
+      <div className="flex-row justify-center mb-3">
+        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+          Profile for: {Auth.getProfile().authenticatedPerson.username}
+        </h2>
 
-    return (
-      <div>
-        <div>
-          <h2>
-            Viewing {Auth.getProfile().data.username}'s profile.
-          </h2>
+        <div className="col-12 col-md-10 mb-5">
+          <ScoreList
+            thoughts={user.thoughts}
+            // title={`${user.username}'s thoughts...`}
+            showTitle={false}
+            showUsername={false}
+          />
         </div>
-        <div>{scores}</div>
+        {!userParam && (
+          <div
+            className="col-12 col-md-10 mb-3 p-3"
+          >
+            {/* <ThoughtForm /> */}
+          </div>
+        )}
       </div>
-    )
+    </div>
+  );
 };
 
 export default Profile;
