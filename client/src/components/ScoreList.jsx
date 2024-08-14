@@ -31,7 +31,7 @@ thoughts,
               ) : (
                 <>
                   <p> Words scored on {thought.createdAt}: {thought.thoughtText}</p>
-                  <p> Words per minute: {thought.thoughtText * 4} </p>
+                  <p> Words per minute: {thought.thoughtText * 2} </p>
                   <br></br>
                 </>
               )}
