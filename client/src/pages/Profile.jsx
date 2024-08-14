@@ -1,7 +1,6 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-// import ThoughtForm from '../components/ThoughtForm';
 import ScoreList from '../components/ScoreList';
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -36,7 +35,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <main>
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Profile for: {Auth.getProfile().authenticatedPerson.username}
@@ -44,8 +43,7 @@ const Profile = () => {
 
         <div className="col-12 col-md-10 mb-5">
           <ScoreList
-            thoughts={user.thoughts}
-            // title={`${user.username}'s thoughts...`}
+            scores={user.scores}
             showTitle={false}
             showUsername={false}
           />
@@ -54,11 +52,10 @@ const Profile = () => {
           <div
             className="col-12 col-md-10 mb-3 p-3"
           >
-            {/* <ThoughtForm /> */}
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 };
 

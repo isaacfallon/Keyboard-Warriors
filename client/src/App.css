@@ -149,14 +149,64 @@ li:hover {
     margin: 0 auto;
     padding: 1em;
     text-align: center;
+    border-radius: 25px;
 }
 
 .gameInput {
-    font-size: 2em;
+    font-size: 3em;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.gameStats p {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.25em;
 }
 
 .randomWord {
-    font-size: 2.5em;
+    font-size: 3em;
+}
+
+.resetButton {
+    display: block;
+}
+
+.gameTimer {
+    display: block;
+    font-size: 3em;
+}
+
+/* Score list styles */
+
+.scoreCardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1em;
+    color: #444;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+
+.scoreCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    background-color: var(--clr-accent);
+    color: white;
+    padding: 20px;
+    max-width: 345px;
+}
+
+/* About */
+
+.aboutText p a {
+    color: var(--clr-accent);
+    font-weight: var(--fw-semi-bold);
 }
 
 /* Footer */
@@ -184,7 +234,7 @@ li:hover {
     cursor: pointer;
 }
 
-/* Modal */
+/* Modal styles */
 
 .Modal {
     display: block;

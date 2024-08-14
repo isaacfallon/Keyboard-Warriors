@@ -25,32 +25,13 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_SCORE = gql`
-  mutation addThought($thoughtText: Int!) {
-    addThought(thoughtText: $thoughtText) {
+  mutation addScore($wordCount: Int!, $letterCount: Int!) {
+    addScore(wordCount: $wordCount, letterCount: $letterCount) {
       _id
-      thoughtText
-      thoughtAuthor
+      wordCount
+      letterCount
+      scoreAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;
