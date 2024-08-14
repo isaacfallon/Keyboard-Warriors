@@ -1,47 +1,39 @@
 import { Link } from 'react-router-dom';
 
 const ScoreList = ({
-thoughts,
+  scores,
   title,
   showTitle = true,
   showUsername = true,
 }) => {
-  if (!thoughts.length) {
+  if (!scores.length) {
     return <h3>No scores saved yet!</h3>;
   }
 
+  const reversedData = scores.slice().reverse();
+  
+
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
-      {thoughts &&
-        thoughts.map((thought) => (
-          <div key={thought._id} className="card mb-3">
-            {/* {thought.thoughtAuthor} */}
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${thought.thoughtAuthor}`}
-                >
-                  {thought.thoughtAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
-                    had this thought on {thought.createdAt}
-                  </span>
-                </Link>
-              ) : (
-                <>
-                  <p> Words scored on {thought.createdAt}: {thought.thoughtText}</p>
-                  <p> Words per minute: {thought.thoughtText * 2} </p>
-                  <br></br>
-                </>
-              )}
-            </h4>
-            <div className="card-body bg-light p-2">
+      {/* <h3>Your high scores:</h3> */}
 
-            </div>
-
-          </div>
-        ))}
+      <h3>Previous scores:</h3>
+      <div className="scoreCardContainer">
+        {showTitle && <h3>{title}</h3>}
+        {reversedData &&
+          reversedData.map((score) => (
+            <>
+              <div key={score._id} className="scoreCard">
+                {/* {score.scoreAuthor} */}
+                <p>{score.createdAt}</p>
+                <p>Words: {score.wordCount} | Letters: {score.letterCount}</p>
+                <p></p>
+                <p> WMP: {Math.round((score.letterCount / (score.letterCount / (score.wordCount * 2))) * 100) / 100}</p>
+              </div>
+              <br />
+            </>
+          ))}
+      </div>
     </div>
   );
 };

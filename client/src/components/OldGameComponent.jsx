@@ -1,3 +1,5 @@
+// NOTE: This was the original game component but is no longer in use. 
+
 import { useState, useEffect, useRef } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 

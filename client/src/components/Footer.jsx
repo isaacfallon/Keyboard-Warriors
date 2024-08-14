@@ -12,7 +12,7 @@ export default function Footer() {
             <ul>
                 <li className="footerElement"><a href="https://isaacfallon.com/" target="_blank" rel="noreferrer">Made by Isaac Fallon</a></li>
                 <li className="footerElement"><a href="https://github.com/isaacfallon/Project-3-Keyboard-Warriors" target="_blank" rel="noreferrer">Project GitHub</a></li>
-                <li className="footerElement" onClick={() => setShowModal(true)}>v0.5</li>
+                <li className="footerElement" onClick={() => setShowModal(true)}>v0.8</li>
                 <Modal
                     className="Modal"
                     overlayClassName="Overlay"

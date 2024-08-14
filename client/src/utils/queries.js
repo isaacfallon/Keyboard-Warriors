@@ -6,9 +6,10 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      scores {
         _id
-        thoughtText
+        wordCount
+        letterCount
         createdAt
       }
     }
@@ -17,28 +18,24 @@ export const QUERY_USER = gql`
 
 export const QUERY_SCORES = gql`
   query getScores {
-    thoughts {
+    scores {
       _id
-      thoughtText
-      thoughtAuthor
+      wordCount
+      letterCount
+      scoreAuthor
       createdAt
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_SINGLE_score = gql`
+  query getSingleScore($scoreId: ID!) {
+    score(scoreId: $scoreId) {
       _id
-      thoughtText
-      thoughtAuthor
+      wordCount
+      letterCount
+      scoreAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
 `;
@@ -49,10 +46,11 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      scores {
         _id
-        thoughtText
-        thoughtAuthor
+        wordCount
+        letterCount
+        scoreAuthor
         createdAt
       }
     }
