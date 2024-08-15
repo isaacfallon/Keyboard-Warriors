@@ -16,7 +16,7 @@ By completing this project, I now understand the nuances of how to translate fro
 
 - The application's typing game mechanic in action:
 
-![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_typing-game-in-progress.png)
+![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_typing-game-in-progress2.png)
 
 ## Table of Contents
             
