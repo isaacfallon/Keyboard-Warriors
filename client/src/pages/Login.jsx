@@ -41,14 +41,13 @@ const Login = (props) => {
     });
   };
     return (
-        <div>
-          <div>
-            <h4>Login</h4>
+        <div className="loginArea">
+            <h3>Login</h3>
             <div>
               {data ? (
                 <p>
-                  Success! You may now head{' '}
-                  <Link to="/">back to the homepage.</Link>
+                  Success! {' '}
+                  <Link to="/"></Link>
                 </p>
               ) : (
                 <form onSubmit={handleFormSubmit}>
@@ -60,6 +59,7 @@ const Login = (props) => {
                     value={formState.email}
                     onChange={handleChange}
                   />
+                  <div></div>
                   <input
                     className="form-input"
                     placeholder="******"
@@ -68,6 +68,7 @@ const Login = (props) => {
                     value={formState.password}
                     onChange={handleChange}
                   />
+                  <div></div>
                   <button
                     className="btn btn-block btn-primary"
                     style={{ cursor: 'pointer' }}
@@ -84,7 +85,6 @@ const Login = (props) => {
                 </div>
               )}
             </div>
-          </div>
         </div>
     );
 }

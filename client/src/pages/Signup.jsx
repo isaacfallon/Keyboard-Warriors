@@ -39,9 +39,8 @@ const Signup = () => {
   };
 
   return (
-      <div>
-        <div>
-          <h4>Sign Up</h4>
+      <div className="loginArea">
+          <h3>Sign Up</h3>
           <div>
             {data ? (
               <p>
@@ -58,6 +57,7 @@ const Signup = () => {
                   value={formState.name}
                   onChange={handleChange}
                 />
+                <div></div>
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -66,6 +66,7 @@ const Signup = () => {
                   value={formState.email}
                   onChange={handleChange}
                 />
+                <div></div>
                 <input
                   className="form-input"
                   placeholder="******"
@@ -74,6 +75,7 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <div></div>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
@@ -90,7 +92,6 @@ const Signup = () => {
               </div>
             )}
           </div>
-        </div>
       </div>
   );
 };

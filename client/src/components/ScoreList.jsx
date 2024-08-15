@@ -11,7 +11,7 @@ const ScoreList = ({
   }
 
   const reversedData = scores.slice().reverse();
-  
+
 
   return (
     <div>
@@ -25,16 +25,15 @@ const ScoreList = ({
             <>
               <div key={score._id} className="scoreCard">
                 {/* {score.scoreAuthor} */}
-                <p>{score.createdAt}</p>
-                <p>Words: {score.wordCount} | Letters: {score.letterCount}</p>
-                <p></p>
-                <p> WMP: {Math.round((score.letterCount / (score.letterCount / (score.wordCount * 2))) * 100) / 100}</p>
-              </div>
+                <p className="underLine">{score.createdAt}</p>
+                <p>Words: <span className="boldStat">{score.wordCount}</span> | Letters: <span className="boldStat">{score.letterCount}</span></p>
+                <p className="WMP">WMP: <span className="boldStat">{(score.letterCount / 5) * 2}</span></p>
+              </div >
               <br />
             </>
           ))}
       </div>
-    </div>
+    </div >
   );
 };
 

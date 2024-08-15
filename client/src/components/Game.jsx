@@ -115,11 +115,14 @@ const Game = () => {
 
 
   function initGame() {
-    handleWordChange();
     document.getElementById('timer').innerHTML = "";
+    handleWordChange();
+
     setTimeLeft(30);
+        
     setWordCount(0);
     setLetterCount(0);
+
   }
 
   return (
@@ -143,17 +146,19 @@ const Game = () => {
         <p id="timer" className="gameTimer">30{timeLeft}</p>
 
         <div className="gameStats">
-          <p>Total words <strong>{wordCount}</strong></p>
           <p>Total letters <strong>{letterCount} </strong></p>
+          <p>Total words <strong>{wordCount}</strong></p>
+
           <p>Average word length: <strong>{(letterCount / wordCount).toFixed(2)}</strong></p>
-          <p>Words per minute: <strong>{(letterCount / (letterCount / (wordCount * 2))).toFixed(2)}</strong></p>
+          <p>Words per minute: <strong>{((letterCount / 5) * 2).toFixed(2)}</strong></p>
         </div>
 
-        <div>
+        <div className="gameBottomContainer">
+          <div className="loginText">
 
-          {Auth.loggedIn() ? (
-            <>
-              {/* <form
+            {Auth.loggedIn() ? (
+              <>
+                {/* <form
 className="flex-row justify-center justify-space-between-md align-center"
 onSubmit={handleFormSubmit}
 >
@@ -179,16 +184,18 @@ Add Score to profile
 </div>
 )}
 </form> */}
-            </>
-          ) : (
-            <p>
-              Want to save your scores and track your progress? {' '}
-              <Link to="/login">Login or signup!</Link>
-            </p>
-          )}
+              </>
+            ) : (
+              <p>
+                Want to save your scores and track your progress? {' '}
+                <Link to="/login">Login or signup!</Link>
+              </p>
+            )}
+          </div>
+          <div className="resetButton">
+            <button type="button" onClick={refreshPage}> <span>Reset game</span> </button>
+          </div>
         </div>
-
-        <button type="button" onClick={refreshPage} className="resetButton"> <span>Reset game</span> </button>
       </div>
 
     </>
