@@ -11,7 +11,11 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import words from 'an-array-of-english-words'
 
+import Modal from 'react-modal';
+
 const Game = () => {
+  Modal.setAppElement('#root');
+  const [showModal, setShowModal] = useState(false);
 
   const [addScore, { error }] = useMutation
     (ADD_SCORE, {
@@ -48,11 +52,12 @@ const Game = () => {
 
   useEffect(() => {
     if (timeLeft === 0) {
-      // alert("TIME'S UP");
+      setShowModal(true);
+      // alert(`Words per minute: ${((letterCount / 5) * 2).toFixed(2)}`);
       setTimeLeft(null);
       SaveDataToLocalStorage(wordCount);
       addScoreToProfile();
-      refreshPage();
+      // refreshPage();
     }
 
     if (!timeLeft) return;
@@ -83,7 +88,7 @@ const Game = () => {
 
     const inputText = document.getElementById('input');
 
-    if (element.includes(value)) {
+    if (element.includes(value) && element.charAt(0) === value.charAt(0)) {
       inputText.style.color = "green";
       setLetterCount(letterCount + 1);
     } else {
@@ -108,7 +113,8 @@ const Game = () => {
     document.getElementById('word').innerHTML = words[(Math.floor(Math.random() * words.length))];
   }
 
-  function refreshPage() {
+  function removeModalAndRefresh() {
+    setShowModal(false);
     window.location.reload();
   }
 
@@ -118,8 +124,8 @@ const Game = () => {
     document.getElementById('timer').innerHTML = "";
     handleWordChange();
 
-    setTimeLeft(30);
-        
+    setTimeLeft(5);
+
     setWordCount(0);
     setLetterCount(0);
 
@@ -127,9 +133,9 @@ const Game = () => {
 
   return (
     <>
-    <div className="smallScreenText"> 
-      <h3>Keyboard Warriors has been designed to be played on bigger screens with a keyboard. Sorry for any issues caused!</h3>
-    </div>
+      <div className="smallScreenText">
+        <h3>Keyboard Warriors has been designed to be played on bigger screens with a keyboard. Sorry for any issues caused!</h3>
+      </div>
       <div className="gameArea">
         <p id="word" className="randomWord">_________________</p>
 
@@ -196,11 +202,38 @@ Add Score to profile
             )}
           </div>
           <div className="resetButton">
-            <button type="button" onClick={refreshPage}> <span>Reset game</span> </button>
+            <button type="button" onClick={removeModalAndRefresh}> <span>Reset game</span> </button>
           </div>
         </div>
       </div>
+      <Modal
+        className="Modal"
+        overlayClassName="Overlay"
+        isOpen={showModal}>
+        <button onClick={() => removeModalAndRefresh()}> Close Modal</button>
+        <h3>Well done! Here are your results:</h3>
 
+        <p>Total letters <strong>{letterCount} </strong></p>
+        <p>Total words <strong>{wordCount}</strong></p>
+
+        <p>Average word length: <strong>{(letterCount / wordCount).toFixed(2)}</strong></p>
+        <p>Words per minute: <strong>{((letterCount / 5) * 2).toFixed(2)}</strong></p>
+
+        {Auth.loggedIn() ? (
+              <>
+              <p>
+                {' '}
+                <Link to="/me">Visit your profile to see your stats! </Link>
+              </p>
+              </>
+            ) : (
+              <p>
+                Want to save your scores and track your progress? {' '}
+                <Link to="/login">Login or signup!</Link>
+              </p>
+            )}
+
+      </Modal>
     </>
   );
 };
