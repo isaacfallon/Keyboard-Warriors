@@ -17,22 +17,22 @@ const Game = () => {
   Modal.setAppElement('#root');
   const [showModal, setShowModal] = useState(false);
 
-  const [addScore, { error }] = useMutation
-    (ADD_SCORE, {
-      refetchQueries: [
-        QUERY_SCORES,
-        'getScores',
-        QUERY_ME,
-        'me'
-      ]
-    });
+  const [addScore, { error }] = useMutation(
+    ADD_SCORE, {
+    refetchQueries: [
+      QUERY_SCORES,
+      'getScores',
+      QUERY_ME,
+      'me'
+    ]
+  });
 
   const addScoreToProfile = async () => {
     try {
       const { data } = await addScore({
         variables: {
-          wordCount: wordCount,
-          letterCount: letterCount,
+          wordCount,
+          letterCount,
         },
       });
 
@@ -52,12 +52,11 @@ const Game = () => {
 
   useEffect(() => {
     if (timeLeft === 0) {
-      setShowModal(true);
       // alert(`Words per minute: ${((letterCount / 5) * 2).toFixed(2)}`);
       setTimeLeft(null);
       SaveDataToLocalStorage(wordCount);
       addScoreToProfile();
-      // refreshPage();
+      setShowModal(true);
     }
 
     if (!timeLeft) return;
@@ -114,8 +113,9 @@ const Game = () => {
   }
 
   function removeModalAndRefresh() {
-    setShowModal(false);
+
     window.location.reload();
+    setShowModal(false);
   }
 
 
@@ -167,32 +167,6 @@ const Game = () => {
 
             {Auth.loggedIn() ? (
               <>
-                {/* <form
-className="flex-row justify-center justify-space-between-md align-center"
-onSubmit={handleFormSubmit}
->
-<div className="col-12 col-lg-9" style={{ display: 'none' }}>
-<textarea
-// name="thoughtText"
-// placeholder=""
-// value={thoughtText}
-className="form-input w-100"
-style={{ lineHeight: '1.5', resize: 'vertical' }}
-onChange={handleChange}
-></textarea>
-</div>
-
-<div className="col-12 col-lg-3">
-<button className="btn btn-primary btn-block py-3" type="submit">
-Add Score to profile
-</button>
-</div>
-{error && (
-<div className="col-12 my-3 bg-danger text-white p-3">
-{error.message}
-</div>
-)}
-</form> */}
               </>
             ) : (
               <p>
@@ -210,29 +184,30 @@ Add Score to profile
         className="Modal"
         overlayClassName="Overlay"
         isOpen={showModal}>
-        <button onClick={() => removeModalAndRefresh()}> Close Modal</button>
-        <h3>Well done! Here are your results:</h3>
+        <button onClick={() => removeModalAndRefresh()}>Close</button>
+        <div className="modalContent">
+          <h3>Well done! Here are your results:</h3>
 
-        <p>Total letters <strong>{letterCount} </strong></p>
-        <p>Total words <strong>{wordCount}</strong></p>
+          <p>Total letters: <strong>{letterCount} </strong></p>
+          <p>Total words: <strong>{wordCount}</strong></p>
 
-        <p>Average word length: <strong>{(letterCount / wordCount).toFixed(2)}</strong></p>
-        <p>Words per minute: <strong>{((letterCount / 5) * 2).toFixed(2)}</strong></p>
-
-        {Auth.loggedIn() ? (
-              <>
+          <p>Average word length: <strong>{(letterCount / wordCount).toFixed(2)}</strong></p>
+          <p>Words per minute: <strong>{((letterCount / 5) * 2).toFixed(2)}</strong></p>
+          <br />
+          {Auth.loggedIn() ? (
+            <>
               <p>
                 {' '}
-                <Link to="/me">Visit your profile to see your stats! </Link>
+                <Link to="/me" className="linkText">Visit your profile to see your stats! </Link>
               </p>
-              </>
-            ) : (
-              <p>
-                Want to save your scores and track your progress? {' '}
-                <Link to="/login">Login or signup!</Link>
-              </p>
-            )}
-
+            </>
+          ) : (
+            <p>
+              Want to save your scores and track your progress? {' '}
+              <Link to="/login" className="linkText">Login or signup!</Link>
+            </p>
+          )}
+        </div>
       </Modal>
     </>
   );

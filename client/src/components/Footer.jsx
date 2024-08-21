@@ -17,21 +17,20 @@ export default function Footer() {
                     className="Modal"
                     overlayClassName="Overlay"
                     isOpen={showModal}>
-                    <button onClick={() => setShowModal(false)}> Close Modal</button>
+                    <button onClick={() => setShowModal(false)}>Close</button>
+                    <div className="modalContent">
+                        <h3>Version 1.1 Patch Notes (21/08/24):</h3>
 
-                    <h3>Version 1.1 Patch Notes (21/08/24):</h3>
-                    
                         <p>- Various fixes to smooth out the UX on smaller screens</p>
                         <p>- Added modal with results after each test and a prompt to either sign up or view profile depending on whether the user is logged in.</p>
                         <br />
-                    <h3>Additions in the works:</h3>
+                        <h3>Additions in the works:</h3>
 
-                        <p>- Better user profile UI</p>
-                        <p>- Dark mode</p>
-                        <p>- Leaderboards</p>
+                        <p>- Improved profile UI</p>
+                        <p>- Dark mode toggle</p>
                         <p>- Other game modes</p>
-                        
-                  
+
+                    </div>
                 </Modal>
             </ul>
         </footer>
