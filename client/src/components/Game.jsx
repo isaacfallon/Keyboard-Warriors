@@ -127,6 +127,9 @@ const Game = () => {
 
   return (
     <>
+    <div className="smallScreenText"> 
+      <h3>Keyboard Warriors has been designed to be played on bigger screens with a keyboard. Sorry for any issues caused!</h3>
+    </div>
       <div className="gameArea">
         <p id="word" className="randomWord">_________________</p>
 
