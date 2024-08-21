@@ -124,7 +124,7 @@ const Game = () => {
     document.getElementById('timer').innerHTML = "";
     handleWordChange();
 
-    setTimeLeft(5);
+    setTimeLeft(30);
 
     setWordCount(0);
     setLetterCount(0);
