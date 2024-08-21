@@ -6,8 +6,12 @@ import ScoreList from '../components/ScoreList';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
+import { useEffect, useState } from 'react';
+
+import { useNavigate } from 'react-router'
 
 const Profile = () => {
+
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -15,6 +19,8 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+
+
   if (
     Auth.loggedIn() && Auth.getProfile().authenticatedPerson.username === userParam
   ) {
@@ -33,6 +39,7 @@ const Profile = () => {
       </h4>
     );
   }
+
 
   return (
     <main>
@@ -57,6 +64,7 @@ const Profile = () => {
       </div>
     </main>
   );
+
 };
 
 export default Profile;

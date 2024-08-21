@@ -27,12 +27,12 @@ const router = createBrowserRouter([
         element: <Login />
       }, {
         path: '/me',
-        element: <Profile />
+        element: <Profile />,
       },
     ]
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router}/>
 )

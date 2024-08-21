@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const ScoreList = ({
   scores,
@@ -6,17 +7,32 @@ const ScoreList = ({
   showTitle = true,
   showUsername = true,
 }) => {
+
+  (() => {
+    if (window.localStorage) {
+      if (!localStorage.getItem('reload')) {
+        localStorage['reload'] = true;
+        window.location.reload();
+      } else {
+        localStorage.removeItem('reload');
+      }
+    }
+  })();
+
   if (!scores.length) {
     return <h3>No scores saved yet!</h3>;
   }
 
+
+
+
   const reversedData = scores.slice().reverse();
+
+
 
 
   return (
     <div>
-      {/* <h3>Your high scores:</h3> */}
-
       <h3>Previous scores:</h3>
       <div className="scoreCardContainer">
         {showTitle && <h3>{title}</h3>}
