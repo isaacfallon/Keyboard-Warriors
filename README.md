@@ -4,7 +4,7 @@
         
 ## Description
             
-This project is a typing test application which analyses a user's typing proficiency and reaction speed.
+Keyboard Warriors is a responsive typing test which analyses a user's typing proficency and reaction speed.
 
 The application is built using the complete MERN-stack (MongoDB back end, GraphQL API, Express.js & Node.js server, React front end) and utilises the npm package 'an-array-of-english-words'. 
 
