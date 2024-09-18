@@ -1,9 +1,6 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-let moment = require('moment'); // require
-let now = moment().format('MMMM Do YYYY, h:mm:ss a');
-
 const scoreSchema = new Schema({
   wordCount: {
     type: Number,
@@ -25,9 +22,9 @@ const scoreSchema = new Schema({
     trim: true,
   },
   createdAt: {
-    type: String,
-    default: now,
-    // get: (timestamp) => dateFormat(timestamp),
+    type: Date,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
 });
 
