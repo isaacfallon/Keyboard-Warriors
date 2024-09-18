@@ -44,7 +44,7 @@ const Game = () => {
         }
     };
 
-    const [timeLeft, setTimeLeft] = useState(null);
+    const [timeLeft, setTimeLeft] = useState('30');
 
     window.onload = function () {
         var a = [];
@@ -55,7 +55,6 @@ const Game = () => {
 
     useEffect(() => {
         if (timeLeft === 0) {
-            // alert(`Words per minute: ${((letterCount / 5) * 2).toFixed(2)}`);
             setSeed(Math.random());
             setTimeLeft(null);
             SaveDataToLocalStorage(wordCount);
@@ -117,7 +116,6 @@ const Game = () => {
     }
 
     function removeModalAndRefresh() {
-
         window.location.reload();
         setOpen(false);
     }
@@ -170,7 +168,7 @@ const Game = () => {
                     >
                     </input>
                 </form>
-                <p id="timer" className="text-4xl p-4">30{timeLeft}</p>
+                <p id="timer" className="text-4xl p-4">{timeLeft}</p>
 
                 <div className="gameBottomContainer">
 
