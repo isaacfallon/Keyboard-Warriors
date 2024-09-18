@@ -131,7 +131,7 @@ const Game = () => {
 
         handleWordChange();
 
-        setTimeLeft(30);
+        setTimeLeft(5);
 
         setWordCount(0);
         setLetterCount(0);
