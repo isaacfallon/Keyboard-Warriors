@@ -16,7 +16,11 @@ By completing this project, I now understand the nuances of how to translate fro
 
 - The application's typing game mechanic in action:
 
-![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_typing-game-in-progress2.png)
+![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_typing-game-in-progress.png)
+
+- The user's profile page:
+
+![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_profile_stats.png)
 
 ## Table of Contents
             
@@ -68,10 +72,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
             
 ## Contributing
-
-- To get the React countdown timer working properly, I referenced the following [Stack Overflow thread](https://stackoverflow.com/questions/59178634/react-5-seconds-countdown-with-hooks), with the answer provided by user Francesco Clementi serving as the inspiration for my implementation using React Hooks.
-
-![Screenshot showing a Stack Overflow answer provided by user Francesco Clementi for implementing a React countdown component.](./assets/contributing_SO-timer-answer_Francesco-Clementi.png)
 
 - To supply random words for the application, I utilised this public [npm package: 'an-array-of-english-words'](https://www.npmjs.com/package/an-array-of-english-words). 
 
