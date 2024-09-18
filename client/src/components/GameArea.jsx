@@ -44,7 +44,7 @@ const Game = () => {
         }
     };
 
-    const [timeLeft, setTimeLeft] = useState('30');
+    const [timeLeft, setTimeLeft] = useState(null);
 
     window.onload = function () {
         var a = [];
@@ -168,7 +168,7 @@ const Game = () => {
                     >
                     </input>
                 </form>
-                <p id="timer" className="text-4xl p-4">{timeLeft}</p>
+               <p id="timer" className="text-4xl p-4">30{timeLeft}</p>
 
                 <div className="gameBottomContainer">
 
