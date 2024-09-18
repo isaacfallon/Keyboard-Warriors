@@ -1,9 +1,8 @@
 
-import Game from '../components/Game';
+import GameArea from '../components/GameArea';
 
 const Home = () => {
-
-
+  
   return (
     <main>
       <div className="flex-row justify-center">
@@ -11,7 +10,7 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
 
         >
-          <Game />
+          <GameArea />
         </div>
       </div>
     </main>

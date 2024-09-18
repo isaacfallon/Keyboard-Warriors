@@ -1,3 +1,4 @@
+// Import Apollo Router dependencies
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,10 +8,11 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
-import Header from './components/Header';
-import Footer from './components/Footer'
+import { useState, useEffect } from 'react';
 
-import VersionModal from './components/VersionModal';
+// Import custom components
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -38,16 +40,46 @@ const client = new ApolloClient({
 
 function App() {
 
+  const [checked, setChecked] = useState(false);
+
+  const root = window.document.documentElement;
+  const lightTheme = "light";
+  const darkTheme = "dark";
+  let theme;
+
+  if (localStorage) {
+    theme = localStorage.getItem("theme")
+  }
+  if (theme === lightTheme || theme === darkTheme) {
+    root.classList.add(theme);
+  } else {
+    root.classList.add(lightTheme)
+  }
+
+  const handleChange = () => {
+    if (theme === darkTheme) {
+    root.classList.replace(darkTheme, lightTheme);
+    localStorage.setItem("theme", "light");
+    theme = lightTheme
+    setChecked(false)
+    } else {
+    root.classList.replace(lightTheme, darkTheme)
+    localStorage.setItem("theme", 'dark')
+    setChecked(true)
+    }
+    };
+
   return (
-    <ApolloProvider client={client}>
+    <main className="flex flex-col min-h-screen bg-gray-200 dark:bg-zinc-600 text-zinc-600 dark:text-gray-100">
+      <ApolloProvider client={client}>
+        <button onClick={handleChange} className="absolute top-2 right-2 px-12 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded">Toggle Theme</button>
 
         <Header />
-        {/* <VersionModal /> */}
-          <Outlet />
+        <Outlet />
+        <Footer />
 
-      <Footer />
-
-    </ApolloProvider>
+      </ApolloProvider>
+    </main>
   );
 }
 

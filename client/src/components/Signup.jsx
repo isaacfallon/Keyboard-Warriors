@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations.js';
 
-import Auth from '../utils/auth';
+import Auth from '../utils/auth.js';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -39,8 +39,8 @@ const Signup = () => {
   };
 
   return (
-      <div className="loginArea">
-          <h3>Sign Up</h3>
+      <div className="mx-8 p-8">
+          <h3 className="text-2xl mb-2 text-center">Sign Up</h3>
           <div>
             {data ? (
               <p>
@@ -50,8 +50,8 @@ const Signup = () => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input"
-                  placeholder="Your username"
+                  className="text-2xl bg-slate-300 dark:bg-gray-900 rounded-lg my-2 px-2"
+                  placeholder="username"
                   name="username"
                   type="text"
                   value={formState.name}
@@ -59,8 +59,8 @@ const Signup = () => {
                 />
                 <div></div>
                 <input
-                  className="form-input"
-                  placeholder="Your email"
+                  className="text-2xl bg-slate-300 dark:bg-gray-900 rounded-lg my-2 px-2"
+                  placeholder="email"
                   name="email"
                   type="email"
                   value={formState.email}
@@ -68,8 +68,8 @@ const Signup = () => {
                 />
                 <div></div>
                 <input
-                  className="form-input"
-                  placeholder="******"
+                  className="text-2xl bg-slate-300 dark:bg-gray-900 rounded-lg my-2 px-2"
+                  placeholder="password"
                   name="password"
                   type="password"
                   value={formState.password}
@@ -77,7 +77,7 @@ const Signup = () => {
                 />
                 <div></div>
                 <button
-                  className="btn btn-block btn-primary"
+                  className="px-12 py-1 bg-sky-500 hover:bg-sky-700 text-white font-bold px-4 rounded w-full"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -87,7 +87,7 @@ const Signup = () => {
             )}
 
             {error && (
-              <div className="my-3 p-3 bg-danger text-white">
+              <div className="">
                 {error.message}
               </div>
             )}
