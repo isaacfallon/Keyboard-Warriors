@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div className="mx-auto w-2/4 p-8 text-lg">
+        <div className="flex flex-col mx-auto p-8">
             <h2 className="text-3xl">About</h2>
             <p>Keyboard Warriors is a responsive typing game which analyses a user&apos;s typing proficiency and reaction speed.</p>
             <br />

@@ -10,7 +10,7 @@ export default function Header() {
     };
 
     return (
-        <header className="text-center mt-16">
+        <header className="text-center mt-12">
             <h1 className="text-7xl font-bold"><Link to="/" className="hover:text-sky-700 dark:hover:text-sky-600">Keyboard Warriors</Link></h1>
 
             <ul className="flex justify-center flex-row mt-6 text-lg">

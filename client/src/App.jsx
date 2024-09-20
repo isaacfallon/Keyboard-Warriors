@@ -53,28 +53,37 @@ function App() {
   if (theme === lightTheme || theme === darkTheme) {
     root.classList.add(theme);
   } else {
-    root.classList.add(lightTheme)
+    root.classList.add(lightTheme);
+
   }
 
   const handleChange = () => {
     if (theme === darkTheme) {
-    root.classList.replace(darkTheme, lightTheme);
-    localStorage.setItem("theme", "light");
-    theme = lightTheme
-    setChecked(false)
+      root.classList.replace(darkTheme, lightTheme);
+      localStorage.setItem("theme", "light");
+      theme = lightTheme;
+      setChecked(false);
     } else {
-    root.classList.replace(lightTheme, darkTheme)
-    localStorage.setItem("theme", 'dark')
-    setChecked(true)
+      root.classList.replace(lightTheme, darkTheme);
+      localStorage.setItem("theme", 'dark');
+      setChecked(true);
     }
-    };
+  };
 
   return (
-    <main className="flex flex-col min-h-screen bg-gray-200 dark:bg-zinc-600 text-zinc-600 dark:text-gray-100">
+    <main className="flex flex-col min-h-screen bg-gray-200 dark:bg-zinc-600 text-zinc-600 dark:text-gray-100 bg-transition-all">
       <ApolloProvider client={client}>
-        <button onClick={handleChange} className="absolute top-2 right-2 px-12 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded">Toggle Theme</button>
+      <button onClick={handleChange} className="absolute top-2 right-2 px-12 bg-zinc-600 dark:bg-gray-200 text-gray-100 dark:text-zinc-600 font-bold px-4 rounded"
+        //  style={
+        //   !checked
+        //     ? {backgroundColor: '#52525b', color: '#f3f4f6'}
+        //     : {backgroundColor: '#f3f4f6', color: '#52525b'}
+        // }
+        >Toggle Theme</button>
 
-        <Header />
+       
+
+      <Header />
         <Outlet />
         <Footer />
 

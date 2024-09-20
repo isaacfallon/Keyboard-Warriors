@@ -59,6 +59,7 @@ const Game = () => {
             setTimeLeft(null);
             SaveDataToLocalStorage(wordCount);
             addScoreToProfile();
+            setInputField('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput pointer-events-none hidden')
             setOpen(true);
         }
 
@@ -124,20 +125,17 @@ const Game = () => {
 
     function initGame() {
         document.getElementById('timer').innerHTML = "";
-
         setGameStatStyles('flex justify-evenly text-2xl');
-
         handleWordChange();
-
         setTimeLeft(30);
-
         setWordCount(0);
         setLetterCount(0);
+        setInputField('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput pointer-events-none')
     }
 
     const [gameStatStyles, setGameStatStyles] = useState('flex justify-evenly text-2xl invisible');
 
-
+    const [inputField, setInputField] = useState('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput')
 
 
     return (
@@ -159,7 +157,7 @@ const Game = () => {
                     <input
                         type="text"
                         id="input"
-                        className="text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput"
+                        className={inputField}
                         placeholder="Click here to start a game"
                         value={wordText}
                         onChange={handleChanger}

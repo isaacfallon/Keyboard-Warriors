@@ -5,3 +5,7 @@
 .gameInput:focus::placeholder {
     color: transparent;
 }
+
+main {
+    transition: 0.3s;
+}
