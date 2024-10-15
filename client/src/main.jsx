@@ -9,6 +9,7 @@ import Error from './pages/Error.jsx';
 import About from './pages/About.jsx';
 import Login from './pages/LoginAndSignUp.jsx'
 import Profile from './pages/Profile.jsx';
+import MathsGamePage from './pages/MathsGamePage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path: '/me',
         element: <Profile />,
       },
+      {
+        path: '/maths',
+        element: <MathsGamePage />
+      }
     ]
   }
 ])

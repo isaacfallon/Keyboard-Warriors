@@ -71,7 +71,7 @@ const Profile = () => {
                     <p className="font-bold text-xl mr-2 inline w-2/5">{score.createdAt}</p>
                     <span className="inline-block bg-sky-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Words: {score.wordCount}</span>
                     <span className="inline-block bg-sky-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Letters: {score.letterCount}</span>
-                    <span className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">WMP: {(score.letterCount / 5) * 2}</span>
+                    <span className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">WPM: {(score.letterCount / 5) * 2}</span>
                   </div>
                 </div>
               ))}

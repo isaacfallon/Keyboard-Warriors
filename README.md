@@ -20,7 +20,7 @@ By completing this project, I now understand the nuances of how to translate fro
 
 - The user's profile page:
 
-![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_profile_stats.png)
+![A screenshot showing the application's typing mechanic in action](./assets/keyboard-warriorsSC_profile_statsv2.png)
 
 ## Table of Contents
             

@@ -10,11 +10,12 @@ export default function Header() {
     };
 
     return (
-        <header className="text-center mt-12">
+        <header className="text-center mt-12 pb-2">
             <h1 className="text-7xl font-bold"><Link to="/" className="hover:text-sky-700 dark:hover:text-sky-600">Keyboard Warriors</Link></h1>
 
             <ul className="flex justify-center flex-row mt-6 text-lg">
                 <li className="px-12"><Link to="/About" className="hover:text-sky-700 dark:hover:text-sky-600">About</Link></li>
+
                 {Auth.loggedIn() ? (
                     <>
                         <li className="px-12">

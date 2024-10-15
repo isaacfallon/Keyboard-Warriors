@@ -125,23 +125,24 @@ const Game = () => {
 
     function initGame() {
         document.getElementById('timer').innerHTML = "";
-        setGameStatStyles('flex justify-evenly text-2xl');
+        setGameStatStyles('flex justify-evenly py-4 text-2xl');
         handleWordChange();
         setTimeLeft(30);
         setWordCount(0);
         setLetterCount(0);
-        setInputField('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput pointer-events-none')
+        setInputField('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput pointer-events-none w-7/12')
     }
 
-    const [gameStatStyles, setGameStatStyles] = useState('flex justify-evenly text-2xl invisible');
+    const [gameStatStyles, setGameStatStyles] = useState('flex justify-evenly text-2xl py-4 invisible');
 
-    const [inputField, setInputField] = useState('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput')
+    const [inputField, setInputField] = useState('text-5xl text-center bg-slate-300 dark:bg-gray-800 dark:text-white rounded-xl px-4 gameInput w-7/12')
 
 
     return (
         <>
 
-            <div className="mx-auto p-4 text-center w-3/5 mt-8 rounded-3xl">
+            <div className="mx-auto text-center w-3/5 mt-2 rounded-3xl">
+            <h2 className="text-2xl font-bold pb-2"><Link to="/maths" className="hover:text-sky-700 dark:hover:text-sky-600">Typing Mode - enter the words as quick as you can!</Link></h2>      
 
                 <div className={gameStatStyles}>
                     <p>Total letters: <strong>{letterCount} </strong></p>
@@ -158,7 +159,7 @@ const Game = () => {
                         type="text"
                         id="input"
                         className={inputField}
-                        placeholder="Click here to start a game"
+                        placeholder="Click to start a typing game"
                         value={wordText}
                         onChange={handleChanger}
                         name="wordText"
@@ -171,7 +172,6 @@ const Game = () => {
                 <div className="gameBottomContainer">
 
                     <button type="button" onClick={removeModalAndRefresh} className='px-12 py-1 bg-orange-500 hover:bg-orange-700 text-white font-bold px-4 rounded'>Reset game</button>
-
                     <div className="text-lg pt-4">
 
                         {Auth.loggedIn() ? (
