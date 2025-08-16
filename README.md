@@ -43,7 +43,7 @@ You can do both by entering the following on one line: `npm i; npm run develop`.
 
 To simply use the deployed application, visit a link to the website deployed on Render here:
 
-- https://keyboardwarriors.site/
+- https://keyboard-warriors.onrender.com/
 
 Otherwise, if you would prefer to host the application locally, follow the steps in [Installation](#installation). 
             
